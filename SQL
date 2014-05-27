@@ -1,0 +1,5 @@
+create table NPEDID ( 
+	pedido NUMERIC(09),
+	data_inclusao DATE,
+	endereco VARCHAR(30));
+	
