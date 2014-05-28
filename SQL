@@ -1,7 +1,10 @@
 create table NPEDID ( 
-	pedido NUMERIC(09),
-	data_inclusao DATE,
+	codigo NUMERIC(09),
+    referencia VARCHAR(45),	
+    unidade CHAR(02),
+    valor_total	DECIMAL(9,3),
+	data_inclusao DATETIME,
+	data_entrega DATE,
 	endereco VARCHAR(30),
 	constraint NPEDID_PK primary key (pedido)
 );
-	

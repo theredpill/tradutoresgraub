@@ -1,5 +1,6 @@
 
-import org.antlr.v4.runtime.ParserRuleContext;
+import java.util.List;
+
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -8,14 +9,18 @@ public class MyCreateTableListener extends CreateTableBaseListener {
 	
 	private Table table;
 	
-	public Column column;
+	private Column column;
 	
-	private CreateTableParser parser;
+	//private CreateTableParser parser;
 	
 
 	public MyCreateTableListener(CreateTableParser parser) {
 		super();
-		this.parser = parser;
+		//this.parser = parser;
+	}
+	
+	public Table getTable() {
+		return table;
 	}
 
 	@Override
@@ -62,8 +67,15 @@ public class MyCreateTableListener extends CreateTableBaseListener {
 
 	@Override
 	public void exitTableConstraint(CreateTableParser.TableConstraintContext ctx) {
-		// TODO Auto-generated method stub
-		super.exitTableConstraint(ctx);
+		String nameColumn = ctx.columnName().getText();
+		List<Column> columns = this.table.getColumns();
+		for (Column column : columns) {
+			// Se encontrou a coluna da chave na lista de colunas
+			if (column.getName().equals(nameColumn)){
+				column.setKey(true);
+				break;
+			}
+		}
 	}
 
 	@Override
@@ -80,14 +92,13 @@ public class MyCreateTableListener extends CreateTableBaseListener {
 
 	@Override
 	public void enterTableDef(CreateTableParser.TableDefContext ctx) {
-		
-		System.out.println("Entrou na tabela " + ctx.getText());
-		
+		//Cria uma nova tabela
+		this.table = new Table();		
 	}
 
 	@Override
 	public void exitTableDef(CreateTableParser.TableDefContext ctx) {
-		System.out.println("Saiu tabela " + ctx.getText());
+
 	}
 
 	@Override
@@ -104,19 +115,24 @@ public class MyCreateTableListener extends CreateTableBaseListener {
 
 	@Override
 	public void enterColumnDef(CreateTableParser.ColumnDefContext ctx) {
-		// TODO Auto-generated method stub
-		super.enterColumnDef(ctx);
 	}
 
 	@Override
 	public void exitColumnDef(CreateTableParser.ColumnDefContext ctx) {
-		// TODO Auto-generated method stub
-		
-		System.out.println(ctx.columnName().getText());
-		System.out.println(ctx.dataTypeDef().dataType().getText());
-		if (ctx.dataTypeDef().lengthDef() != null)
-		System.out.println(ctx.dataTypeDef().lengthDef().NUMBER().getText());
-		this.column =  new Column("teste", "teste", "teste", 999);
+		//Cria uma nova coluna
+		this.column = new Column();		
+		this.column.setName(ctx.columnName().getText());
+		this.column.setDataType(ctx.dataTypeDef().dataType().getText());
+		if (ctx.dataTypeDef().lengthDef() != null){
+			Integer num = Integer.parseInt(ctx.dataTypeDef().lengthDef().NUMBER(0).getText());
+			this.column.setLengthInteger(num);		
+			// Se o segundo número foi detectado, trata-se da parte decimal
+			if (ctx.dataTypeDef().lengthDef().NUMBER(1) != null){
+				num = Integer.parseInt(ctx.dataTypeDef().lengthDef().NUMBER(1).getText());
+				this.column.setLengthDecimal(num);
+			}
+		}		
+		this.table.addColumn(this.column);		
 	}
 
 	@Override

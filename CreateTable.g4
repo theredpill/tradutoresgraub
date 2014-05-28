@@ -1,10 +1,5 @@
 grammar CreateTable;
 
-@header {
-import java.util.ArrayList;
-import java.util.List;
-}
-
 tableList
 	:	(tableDef)*	
 	;
@@ -29,7 +24,7 @@ dataType
 	:	ID;
 	
 lengthDef
-	:	LEFT_PAREN NUMBER RIGHT_PAREN | LEFT_PAREN NUMBER COMMA DECIMAL RIGHT_PAREN;
+	:	LEFT_PAREN NUMBER RIGHT_PAREN | LEFT_PAREN NUMBER COMMA NUMBER RIGHT_PAREN;
 	
 tableConstraint
     :	('constraint' ID)? 'primary' 'key'  '(' columnName ')';	

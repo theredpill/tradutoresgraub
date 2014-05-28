@@ -32,28 +32,17 @@ public class Translate {
         ParseTreeWalker walker = new ParseTreeWalker();
         MyCreateTableListener listener = new MyCreateTableListener(parser);
         walker.walk(listener, tree);
-        System.out.println("Foi!!!!");
-        System.out.println(listener.column.getName());
-        
-        
-//        List<Table> tables = (List<Table>) parser.tableList().tables;
-//        for (Table table : tables) {
-//			System.out.println("Tabela: " + table.getName());
-//			
-//			List<Column> cols = table.getColumns();
-//			for (Column column : cols) {
-//				System.out.println("	Nome Coluna: " + column.getName());
-//				System.out.println("	Datatype...: " + column.getDataType());
-//				System.out.println("	Tamanho....: " + column.getLength());
-//				System.out.println("	Constraint.: " + column.getConstraint());
-//			}
-//			
-//		}
-//        Table table = tables.get(0);
-//        objectToCobolFD(table);
-//        
-        
-        //System.out.println(tree.toStringTree(parser)); // print LISP-style tree
+                
+		Table table = listener.getTable();
+		List<Column> cols = table.getColumns();
+		for (Column column : cols) {
+			System.out.println("	Nome Coluna: " + column.getName());
+			System.out.println("	É chave....: " + column.isKey());
+			System.out.println("	Datatype...: " + column.getDataType());
+			System.out.println("	Tamanho int: " + column.getLengthInteger());
+			System.out.println("	Tamanho dec: " + column.getLengthDecimal());
+			System.out.println("	Constraint.: " + column.getConstraint());
+		}
 
 	}
 

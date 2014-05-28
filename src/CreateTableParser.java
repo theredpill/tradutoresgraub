@@ -1,8 +1,4 @@
 // Generated from CreateTable.g4 by ANTLR 4.2.2
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -442,10 +438,12 @@ public class CreateTableParser extends Parser {
 
 	public static class LengthDefContext extends ParserRuleContext {
 		public TerminalNode COMMA() { return getToken(CreateTableParser.COMMA, 0); }
+		public TerminalNode NUMBER(int i) {
+			return getToken(CreateTableParser.NUMBER, i);
+		}
 		public TerminalNode RIGHT_PAREN() { return getToken(CreateTableParser.RIGHT_PAREN, 0); }
-		public TerminalNode NUMBER() { return getToken(CreateTableParser.NUMBER, 0); }
+		public List<TerminalNode> NUMBER() { return getTokens(CreateTableParser.NUMBER); }
 		public TerminalNode LEFT_PAREN() { return getToken(CreateTableParser.LEFT_PAREN, 0); }
-		public TerminalNode DECIMAL() { return getToken(CreateTableParser.DECIMAL, 0); }
 		public LengthDefContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -481,7 +479,7 @@ public class CreateTableParser extends Parser {
 				setState(79); match(LEFT_PAREN);
 				setState(80); match(NUMBER);
 				setState(81); match(COMMA);
-				setState(82); match(DECIMAL);
+				setState(82); match(NUMBER);
 				setState(83); match(RIGHT_PAREN);
 				}
 				break;
@@ -715,7 +713,7 @@ public class CreateTableParser extends Parser {
 		"\5\32\16\2BD\5\f\7\2CB\3\2\2\2CD\3\2\2\2DF\3\2\2\2EG\5\24\13\2FE\3\2\2"+
 		"\2FG\3\2\2\2G\13\3\2\2\2HJ\5\16\b\2IK\5\20\t\2JI\3\2\2\2JK\3\2\2\2K\r"+
 		"\3\2\2\2LM\7\20\2\2M\17\3\2\2\2NO\7\t\2\2OP\7\16\2\2PW\7\n\2\2QR\7\t\2"+
-		"\2RS\7\16\2\2ST\7\13\2\2TU\7\17\2\2UW\7\n\2\2VN\3\2\2\2VQ\3\2\2\2W\21"+
+		"\2RS\7\16\2\2ST\7\13\2\2TU\7\16\2\2UW\7\n\2\2VN\3\2\2\2VQ\3\2\2\2W\21"+
 		"\3\2\2\2XY\7\b\2\2Y[\7\20\2\2ZX\3\2\2\2Z[\3\2\2\2[\\\3\2\2\2\\]\7\7\2"+
 		"\2]^\7\5\2\2^_\7\t\2\2_`\5\32\16\2`a\7\n\2\2a\23\3\2\2\2bc\7\3\2\2c\25"+
 		"\3\2\2\2de\7\20\2\2e\27\3\2\2\2fg\7\20\2\2g\31\3\2\2\2hi\7\20\2\2i\33"+

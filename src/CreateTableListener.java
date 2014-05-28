@@ -1,8 +1,4 @@
 // Generated from CreateTable.g4 by ANTLR 4.2.2
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
