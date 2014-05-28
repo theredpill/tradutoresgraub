@@ -17,7 +17,7 @@ tablename
 	:	(schema DOT)? table;
  
 tableElementList
-	:	LEFT_PAREN columnDef (COMMA columnDef)* (COMMA tableConstraint )* RIGHT_PAREN;
+	:	LEFT_PAREN columnDef (COMMA columnDef)* (COMMA tableConstraint)* RIGHT_PAREN;
  
 columnDef
 	:	columnName dataTypeDef? columnConstraint?;
@@ -32,10 +32,10 @@ lengthDef
 	:	LEFT_PAREN NUMBER RIGHT_PAREN | LEFT_PAREN NUMBER COMMA DECIMAL RIGHT_PAREN;
 	
 tableConstraint
-    :	'TODO:COMPLETAR';	
+    :	('constraint' ID)? 'primary' 'key'  '(' columnName ')';	
     
 columnConstraint
-	:	'TODO:COMPLETAR';
+	:	'not null';
          
 schema
 	:	ID;
@@ -46,7 +46,6 @@ table
 columnName
 	:	ID;
 
- 
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/

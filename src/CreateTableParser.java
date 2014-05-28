@@ -18,11 +18,12 @@ public class CreateTableParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__2=1, T__1=2, T__0=3, LEFT_PAREN=4, RIGHT_PAREN=5, COMMA=6, SEMICOLON=7, 
-		DOT=8, NUMBER=9, DECIMAL=10, ID=11, WS=12;
+		T__5=1, T__4=2, T__3=3, T__2=4, T__1=5, T__0=6, LEFT_PAREN=7, RIGHT_PAREN=8, 
+		COMMA=9, SEMICOLON=10, DOT=11, NUMBER=12, DECIMAL=13, ID=14, WS=15;
 	public static final String[] tokenNames = {
-		"<INVALID>", "'table'", "'create'", "'TODO:COMPLETAR'", "'('", "')'", 
-		"','", "';'", "'.'", "NUMBER", "DECIMAL", "ID", "WS"
+		"<INVALID>", "'not null'", "'table'", "'key'", "'create'", "'primary'", 
+		"'constraint'", "'('", "')'", "','", "';'", "'.'", "NUMBER", "DECIMAL", 
+		"ID", "WS"
 	};
 	public static final int
 		RULE_tableList = 0, RULE_tableDef = 1, RULE_tablename = 2, RULE_tableElementList = 3, 
@@ -55,11 +56,11 @@ public class CreateTableParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class TableListContext extends ParserRuleContext {
-		public TableDefContext tableDef(int i) {
-			return getRuleContext(TableDefContext.class,i);
-		}
 		public List<TableDefContext> tableDef() {
 			return getRuleContexts(TableDefContext.class);
+		}
+		public TableDefContext tableDef(int i) {
+			return getRuleContext(TableDefContext.class,i);
 		}
 		public TableListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -85,7 +86,7 @@ public class CreateTableParser extends Parser {
 			setState(29);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==2) {
+			while (_la==4) {
 				{
 				{
 				setState(26); tableDef();
@@ -109,13 +110,13 @@ public class CreateTableParser extends Parser {
 	}
 
 	public static class TableDefContext extends ParserRuleContext {
-		public TerminalNode SEMICOLON() { return getToken(CreateTableParser.SEMICOLON, 0); }
 		public TableElementListContext tableElementList() {
 			return getRuleContext(TableElementListContext.class,0);
 		}
 		public TablenameContext tablename() {
 			return getRuleContext(TablenameContext.class,0);
 		}
+		public TerminalNode SEMICOLON() { return getToken(CreateTableParser.SEMICOLON, 0); }
 		public TableDefContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -136,8 +137,8 @@ public class CreateTableParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(32); match(2);
-			setState(33); match(1);
+			setState(32); match(4);
+			setState(33); match(2);
 			setState(34); tablename();
 			setState(35); tableElementList();
 			setState(36); match(SEMICOLON);
@@ -206,21 +207,21 @@ public class CreateTableParser extends Parser {
 	}
 
 	public static class TableElementListContext extends ParserRuleContext {
+		public ColumnDefContext columnDef(int i) {
+			return getRuleContext(ColumnDefContext.class,i);
+		}
+		public List<TableConstraintContext> tableConstraint() {
+			return getRuleContexts(TableConstraintContext.class);
+		}
 		public TableConstraintContext tableConstraint(int i) {
 			return getRuleContext(TableConstraintContext.class,i);
 		}
-		public TerminalNode RIGHT_PAREN() { return getToken(CreateTableParser.RIGHT_PAREN, 0); }
 		public List<TerminalNode> COMMA() { return getTokens(CreateTableParser.COMMA); }
 		public List<ColumnDefContext> columnDef() {
 			return getRuleContexts(ColumnDefContext.class);
 		}
+		public TerminalNode RIGHT_PAREN() { return getToken(CreateTableParser.RIGHT_PAREN, 0); }
 		public TerminalNode LEFT_PAREN() { return getToken(CreateTableParser.LEFT_PAREN, 0); }
-		public List<TableConstraintContext> tableConstraint() {
-			return getRuleContexts(TableConstraintContext.class);
-		}
-		public ColumnDefContext columnDef(int i) {
-			return getRuleContext(ColumnDefContext.class,i);
-		}
 		public TerminalNode COMMA(int i) {
 			return getToken(CreateTableParser.COMMA, i);
 		}
@@ -293,14 +294,14 @@ public class CreateTableParser extends Parser {
 	}
 
 	public static class ColumnDefContext extends ParserRuleContext {
+		public ColumnNameContext columnName() {
+			return getRuleContext(ColumnNameContext.class,0);
+		}
 		public DataTypeDefContext dataTypeDef() {
 			return getRuleContext(DataTypeDefContext.class,0);
 		}
 		public ColumnConstraintContext columnConstraint() {
 			return getRuleContext(ColumnConstraintContext.class,0);
-		}
-		public ColumnNameContext columnName() {
-			return getRuleContext(ColumnNameContext.class,0);
 		}
 		public ColumnDefContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -334,7 +335,7 @@ public class CreateTableParser extends Parser {
 
 			setState(68);
 			_la = _input.LA(1);
-			if (_la==3) {
+			if (_la==1) {
 				{
 				setState(67); columnConstraint();
 				}
@@ -440,11 +441,11 @@ public class CreateTableParser extends Parser {
 	}
 
 	public static class LengthDefContext extends ParserRuleContext {
-		public TerminalNode DECIMAL() { return getToken(CreateTableParser.DECIMAL, 0); }
-		public TerminalNode RIGHT_PAREN() { return getToken(CreateTableParser.RIGHT_PAREN, 0); }
 		public TerminalNode COMMA() { return getToken(CreateTableParser.COMMA, 0); }
+		public TerminalNode RIGHT_PAREN() { return getToken(CreateTableParser.RIGHT_PAREN, 0); }
 		public TerminalNode NUMBER() { return getToken(CreateTableParser.NUMBER, 0); }
 		public TerminalNode LEFT_PAREN() { return getToken(CreateTableParser.LEFT_PAREN, 0); }
+		public TerminalNode DECIMAL() { return getToken(CreateTableParser.DECIMAL, 0); }
 		public LengthDefContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -498,6 +499,10 @@ public class CreateTableParser extends Parser {
 	}
 
 	public static class TableConstraintContext extends ParserRuleContext {
+		public ColumnNameContext columnName() {
+			return getRuleContext(ColumnNameContext.class,0);
+		}
+		public TerminalNode ID() { return getToken(CreateTableParser.ID, 0); }
 		public TableConstraintContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -515,10 +520,24 @@ public class CreateTableParser extends Parser {
 	public final TableConstraintContext tableConstraint() throws RecognitionException {
 		TableConstraintContext _localctx = new TableConstraintContext(_ctx, getState());
 		enterRule(_localctx, 16, RULE_tableConstraint);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(86); match(3);
+			setState(88);
+			_la = _input.LA(1);
+			if (_la==6) {
+				{
+				setState(86); match(6);
+				setState(87); match(ID);
+				}
+			}
+
+			setState(90); match(5);
+			setState(91); match(3);
+			setState(92); match(LEFT_PAREN);
+			setState(93); columnName();
+			setState(94); match(RIGHT_PAREN);
 			}
 		}
 		catch (RecognitionException re) {
@@ -553,7 +572,7 @@ public class CreateTableParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(88); match(3);
+			setState(96); match(1);
 			}
 		}
 		catch (RecognitionException re) {
@@ -589,7 +608,7 @@ public class CreateTableParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(90); match(ID);
+			setState(98); match(ID);
 			}
 		}
 		catch (RecognitionException re) {
@@ -625,7 +644,7 @@ public class CreateTableParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(92); match(ID);
+			setState(100); match(ID);
 			}
 		}
 		catch (RecognitionException re) {
@@ -661,7 +680,7 @@ public class CreateTableParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(94); match(ID);
+			setState(102); match(ID);
 			}
 		}
 		catch (RecognitionException re) {
@@ -676,29 +695,31 @@ public class CreateTableParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\16c\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\21k\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
 		"\f\t\f\4\r\t\r\4\16\t\16\3\2\7\2\36\n\2\f\2\16\2!\13\2\3\3\3\3\3\3\3\3"+
 		"\3\3\3\3\3\4\3\4\3\4\5\4,\n\4\3\4\3\4\3\5\3\5\3\5\3\5\7\5\64\n\5\f\5\16"+
 		"\5\67\13\5\3\5\3\5\7\5;\n\5\f\5\16\5>\13\5\3\5\3\5\3\6\3\6\5\6D\n\6\3"+
 		"\6\5\6G\n\6\3\7\3\7\5\7K\n\7\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5"+
-		"\tW\n\t\3\n\3\n\3\13\3\13\3\f\3\f\3\r\3\r\3\16\3\16\3\16\2\2\17\2\4\6"+
-		"\b\n\f\16\20\22\24\26\30\32\2\2]\2\37\3\2\2\2\4\"\3\2\2\2\6+\3\2\2\2\b"+
-		"/\3\2\2\2\nA\3\2\2\2\fH\3\2\2\2\16L\3\2\2\2\20V\3\2\2\2\22X\3\2\2\2\24"+
-		"Z\3\2\2\2\26\\\3\2\2\2\30^\3\2\2\2\32`\3\2\2\2\34\36\5\4\3\2\35\34\3\2"+
-		"\2\2\36!\3\2\2\2\37\35\3\2\2\2\37 \3\2\2\2 \3\3\2\2\2!\37\3\2\2\2\"#\7"+
-		"\4\2\2#$\7\3\2\2$%\5\6\4\2%&\5\b\5\2&\'\7\t\2\2\'\5\3\2\2\2()\5\26\f\2"+
-		")*\7\n\2\2*,\3\2\2\2+(\3\2\2\2+,\3\2\2\2,-\3\2\2\2-.\5\30\r\2.\7\3\2\2"+
-		"\2/\60\7\6\2\2\60\65\5\n\6\2\61\62\7\b\2\2\62\64\5\n\6\2\63\61\3\2\2\2"+
-		"\64\67\3\2\2\2\65\63\3\2\2\2\65\66\3\2\2\2\66<\3\2\2\2\67\65\3\2\2\28"+
-		"9\7\b\2\29;\5\22\n\2:8\3\2\2\2;>\3\2\2\2<:\3\2\2\2<=\3\2\2\2=?\3\2\2\2"+
-		"><\3\2\2\2?@\7\7\2\2@\t\3\2\2\2AC\5\32\16\2BD\5\f\7\2CB\3\2\2\2CD\3\2"+
-		"\2\2DF\3\2\2\2EG\5\24\13\2FE\3\2\2\2FG\3\2\2\2G\13\3\2\2\2HJ\5\16\b\2"+
-		"IK\5\20\t\2JI\3\2\2\2JK\3\2\2\2K\r\3\2\2\2LM\7\r\2\2M\17\3\2\2\2NO\7\6"+
-		"\2\2OP\7\13\2\2PW\7\7\2\2QR\7\6\2\2RS\7\13\2\2ST\7\b\2\2TU\7\f\2\2UW\7"+
-		"\7\2\2VN\3\2\2\2VQ\3\2\2\2W\21\3\2\2\2XY\7\5\2\2Y\23\3\2\2\2Z[\7\5\2\2"+
-		"[\25\3\2\2\2\\]\7\r\2\2]\27\3\2\2\2^_\7\r\2\2_\31\3\2\2\2`a\7\r\2\2a\33"+
-		"\3\2\2\2\n\37+\65<CFJV";
+		"\tW\n\t\3\n\3\n\5\n[\n\n\3\n\3\n\3\n\3\n\3\n\3\n\3\13\3\13\3\f\3\f\3\r"+
+		"\3\r\3\16\3\16\3\16\2\2\17\2\4\6\b\n\f\16\20\22\24\26\30\32\2\2f\2\37"+
+		"\3\2\2\2\4\"\3\2\2\2\6+\3\2\2\2\b/\3\2\2\2\nA\3\2\2\2\fH\3\2\2\2\16L\3"+
+		"\2\2\2\20V\3\2\2\2\22Z\3\2\2\2\24b\3\2\2\2\26d\3\2\2\2\30f\3\2\2\2\32"+
+		"h\3\2\2\2\34\36\5\4\3\2\35\34\3\2\2\2\36!\3\2\2\2\37\35\3\2\2\2\37 \3"+
+		"\2\2\2 \3\3\2\2\2!\37\3\2\2\2\"#\7\6\2\2#$\7\4\2\2$%\5\6\4\2%&\5\b\5\2"+
+		"&\'\7\f\2\2\'\5\3\2\2\2()\5\26\f\2)*\7\r\2\2*,\3\2\2\2+(\3\2\2\2+,\3\2"+
+		"\2\2,-\3\2\2\2-.\5\30\r\2.\7\3\2\2\2/\60\7\t\2\2\60\65\5\n\6\2\61\62\7"+
+		"\13\2\2\62\64\5\n\6\2\63\61\3\2\2\2\64\67\3\2\2\2\65\63\3\2\2\2\65\66"+
+		"\3\2\2\2\66<\3\2\2\2\67\65\3\2\2\289\7\13\2\29;\5\22\n\2:8\3\2\2\2;>\3"+
+		"\2\2\2<:\3\2\2\2<=\3\2\2\2=?\3\2\2\2><\3\2\2\2?@\7\n\2\2@\t\3\2\2\2AC"+
+		"\5\32\16\2BD\5\f\7\2CB\3\2\2\2CD\3\2\2\2DF\3\2\2\2EG\5\24\13\2FE\3\2\2"+
+		"\2FG\3\2\2\2G\13\3\2\2\2HJ\5\16\b\2IK\5\20\t\2JI\3\2\2\2JK\3\2\2\2K\r"+
+		"\3\2\2\2LM\7\20\2\2M\17\3\2\2\2NO\7\t\2\2OP\7\16\2\2PW\7\n\2\2QR\7\t\2"+
+		"\2RS\7\16\2\2ST\7\13\2\2TU\7\17\2\2UW\7\n\2\2VN\3\2\2\2VQ\3\2\2\2W\21"+
+		"\3\2\2\2XY\7\b\2\2Y[\7\20\2\2ZX\3\2\2\2Z[\3\2\2\2[\\\3\2\2\2\\]\7\7\2"+
+		"\2]^\7\5\2\2^_\7\t\2\2_`\5\32\16\2`a\7\n\2\2a\23\3\2\2\2bc\7\3\2\2c\25"+
+		"\3\2\2\2de\7\20\2\2e\27\3\2\2\2fg\7\20\2\2g\31\3\2\2\2hi\7\20\2\2i\33"+
+		"\3\2\2\2\13\37+\65<CFJVZ";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

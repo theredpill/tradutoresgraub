@@ -33,19 +33,6 @@ public class CreateTableBaseListener implements CreateTableListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLengthDef(@NotNull CreateTableParser.LengthDefContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitLengthDef(@NotNull CreateTableParser.LengthDefContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterDataType(@NotNull CreateTableParser.DataTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -59,58 +46,6 @@ public class CreateTableBaseListener implements CreateTableListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTableConstraint(@NotNull CreateTableParser.TableConstraintContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTableConstraint(@NotNull CreateTableParser.TableConstraintContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterColumnConstraint(@NotNull CreateTableParser.ColumnConstraintContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitColumnConstraint(@NotNull CreateTableParser.ColumnConstraintContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterTableDef(@NotNull CreateTableParser.TableDefContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTableDef(@NotNull CreateTableParser.TableDefContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterTableList(@NotNull CreateTableParser.TableListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTableList(@NotNull CreateTableParser.TableListContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterColumnDef(@NotNull CreateTableParser.ColumnDefContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -118,6 +53,19 @@ public class CreateTableBaseListener implements CreateTableListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitColumnDef(@NotNull CreateTableParser.ColumnDefContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTableElementList(@NotNull CreateTableParser.TableElementListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTableElementList(@NotNull CreateTableParser.TableElementListContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -150,13 +98,26 @@ public class CreateTableBaseListener implements CreateTableListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTableElementList(@NotNull CreateTableParser.TableElementListContext ctx) { }
+	@Override public void enterColumnName(@NotNull CreateTableParser.ColumnNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTableElementList(@NotNull CreateTableParser.TableElementListContext ctx) { }
+	@Override public void exitColumnName(@NotNull CreateTableParser.ColumnNameContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterColumnConstraint(@NotNull CreateTableParser.ColumnConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitColumnConstraint(@NotNull CreateTableParser.ColumnConstraintContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -176,13 +137,52 @@ public class CreateTableBaseListener implements CreateTableListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterColumnName(@NotNull CreateTableParser.ColumnNameContext ctx) { }
+	@Override public void enterLengthDef(@NotNull CreateTableParser.LengthDefContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitColumnName(@NotNull CreateTableParser.ColumnNameContext ctx) { }
+	@Override public void exitLengthDef(@NotNull CreateTableParser.LengthDefContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTableDef(@NotNull CreateTableParser.TableDefContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTableDef(@NotNull CreateTableParser.TableDefContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTableConstraint(@NotNull CreateTableParser.TableConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTableConstraint(@NotNull CreateTableParser.TableConstraintContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTableList(@NotNull CreateTableParser.TableListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTableList(@NotNull CreateTableParser.TableListContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
