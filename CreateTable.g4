@@ -18,7 +18,7 @@ columnDef
 	:	columnName dataTypeDef? columnConstraint?;
  
 dataTypeDef
-	:	dataType lengthDef?;
+	:	dataType lengthDef? comment?;
 
 dataType 
 	:	ID;
@@ -26,6 +26,9 @@ dataType
 lengthDef
 	:	LEFT_PAREN NUMBER RIGHT_PAREN | LEFT_PAREN NUMBER COMMA NUMBER RIGHT_PAREN;
 	
+comment
+	:	'comment' STRING;
+
 tableConstraint
     :	('constraint' ID)? 'primary' 'key'  '(' columnName ')';	
     
@@ -44,7 +47,7 @@ columnName
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/
- 
+STRING		: '\'' ( ~'\'' | '\'\'' )* '\'';
 LEFT_PAREN 	: '(';
 RIGHT_PAREN : ')';
 COMMA 		: ',';
