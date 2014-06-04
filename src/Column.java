@@ -5,7 +5,8 @@ public class Column {
     private String constraint;
     private int lengthInteger;
     private int lengthDecimal;
-    private boolean isKey;
+    private String comment;
+    private boolean key;
  
 	public Integer getLengthInteger() {
 		return lengthInteger;
@@ -17,6 +18,14 @@ public class Column {
 
 	public Integer getLengthDecimal() {
 		return lengthDecimal;
+	}
+	
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 	public void setLengthDecimal(Integer lengthDecimal) {
@@ -48,11 +57,11 @@ public class Column {
 	}
 	
 	public boolean isKey() {
-		return isKey;
+		return key;
 	}
 
-	public void setKey(boolean isKey) {
-		this.isKey = isKey;
+	public void setKey(boolean key) {
+		this.key = key;
 	}
 	
 	@Override
