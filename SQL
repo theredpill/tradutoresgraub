@@ -1,7 +1,7 @@
 create table NPEDID ( 
-	codigo NUMERIC(09),
-    referencia VARCHAR(45),	
-    unidade CHAR(02),
+	codigo NUMERIC(09) comment 'Codigo do pedido',
+    referencia VARCHAR(45) comment 'Referencia do estoque',	
+    unidade CHAR(02) comment 'Unidade de armazenamento',
     valor_total	DECIMAL(9,3),
 	data_inclusao DATETIME,
 	data_entrega DATE,

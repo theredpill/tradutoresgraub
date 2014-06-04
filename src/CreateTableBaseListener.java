@@ -133,6 +133,19 @@ public class CreateTableBaseListener implements CreateTableListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterComment(@NotNull CreateTableParser.CommentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComment(@NotNull CreateTableParser.CommentContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterLengthDef(@NotNull CreateTableParser.LengthDefContext ctx) { }
 	/**
 	 * {@inheritDoc}

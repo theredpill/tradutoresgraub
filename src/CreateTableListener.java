@@ -107,6 +107,17 @@ public interface CreateTableListener extends ParseTreeListener {
 	void exitTable(@NotNull CreateTableParser.TableContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link CreateTableParser#comment}.
+	 * @param ctx the parse tree
+	 */
+	void enterComment(@NotNull CreateTableParser.CommentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CreateTableParser#comment}.
+	 * @param ctx the parse tree
+	 */
+	void exitComment(@NotNull CreateTableParser.CommentContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link CreateTableParser#lengthDef}.
 	 * @param ctx the parse tree
 	 */

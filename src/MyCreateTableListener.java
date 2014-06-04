@@ -131,7 +131,11 @@ public class MyCreateTableListener extends CreateTableBaseListener {
 				num = Integer.parseInt(ctx.dataTypeDef().lengthDef().NUMBER(1).getText());
 				this.column.setLengthDecimal(num);
 			}
-		}		
+		}	
+		if (ctx.dataTypeDef().comment() != null){
+			this.column.setComment(ctx.dataTypeDef().comment().STRING().getText());;
+		}
+		
 		this.table.addColumn(this.column);		
 	}
 
@@ -181,6 +185,18 @@ public class MyCreateTableListener extends CreateTableBaseListener {
 	public void exitTable(CreateTableParser.TableContext ctx) {
 		// TODO Auto-generated method stub
 		super.exitTable(ctx);
+	}
+
+	@Override
+	public void enterComment(CreateTableParser.CommentContext ctx) {
+		// TODO Auto-generated method stub
+		super.enterComment(ctx);
+	}
+
+	@Override
+	public void exitComment(CreateTableParser.CommentContext ctx) {
+		// TODO Auto-generated method stub		
+		super.exitComment(ctx);
 	}
 
 	@Override

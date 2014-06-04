@@ -1,4 +1,3 @@
-// import ANTLR's runtime libraries
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
@@ -42,6 +41,7 @@ public class Translate {
 			System.out.println("	Tamanho int: " + column.getLengthInteger());
 			System.out.println("	Tamanho dec: " + column.getLengthDecimal());
 			System.out.println("	Constraint.: " + column.getConstraint());
+			System.out.println("	Comentário.: " + column.getComment());
 		}
 
 	}
