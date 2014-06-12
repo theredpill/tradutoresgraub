@@ -5,22 +5,25 @@ import java.util.List;
 public class Table {
 
     private String name;
+    private int length;
     private List<Column> columns;
  
     public Table() {
     	this.columns = new ArrayList<Column>();
     }
     
-    public Table(final String name, List<Column> cols) {
-        this.name = name;
-        //Collections.sort(cols);
-        this.columns = cols;
-    }
-
 	public String getName() {
 		return name;
 	}
 	
+	public int getLength() {
+		return length;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
+	}
+
 	public void addColumn(Column column){
 		this.columns.add(column);
 	}

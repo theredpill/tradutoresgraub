@@ -7,6 +7,7 @@ public class Column {
     private int lengthDecimal;
     private String comment;
     private boolean key;
+    private String pic;
  
 	public Integer getLengthInteger() {
 		return lengthInteger;
@@ -20,6 +21,14 @@ public class Column {
 		return lengthDecimal;
 	}
 	
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+
 	public String getComment() {
 		return comment;
 	}

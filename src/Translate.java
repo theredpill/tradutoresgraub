@@ -35,11 +35,13 @@ public class Translate {
         walker.walk(listener, tree);
                 
 		Table table = listener.getTable();
+		System.out.println("FD\t" + table.getName() + " RECORD CONTAINS " + table.getLength() + " CHARACTERS.");
 		List<Column> cols = table.getColumns();
 		for (Column column : cols) {
 			System.out.println("	Nome Coluna: " + column.getName());
 			System.out.println("	É chave....: " + column.isKey());
 			System.out.println("	Datatype...: " + column.getDataType());
+			System.out.println("	pic........: " + column.getPic());
 			System.out.println("	Tamanho int: " + column.getLengthInteger());
 			System.out.println("	Tamanho dec: " + column.getLengthDecimal());
 			System.out.println("	Constraint.: " + column.getConstraint());

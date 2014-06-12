@@ -20,7 +20,25 @@ public class MyCreateTableListener extends CreateTableBaseListener {
 	}
 	
 	public Table getTable() {
-		return table;
+		// Calcular tamanho da tabela (utilizado na FD do Cobol)
+		int tamanho = 0;
+		for (Column column : table.getColumns()) {
+			if (column.getDataType().equals("DATE")){
+				// ddmmaaaa
+				column.setLengthInteger(10);
+			} 
+			else if (column.getDataType().equals("DATETIME")){
+				column.setLengthInteger(16);
+			}  
+			tamanho = tamanho + column.getLengthInteger();			
+			if (column.getDataType().equals("VARCHAR")||column.getDataType().equals("CHAR")){
+				column.setPic("X");
+			} else {
+				column.setPic("9");
+			}			
+		}
+		this.table.setLength(tamanho);
+		return this.table;
 	}
 
 	@Override
@@ -98,7 +116,7 @@ public class MyCreateTableListener extends CreateTableBaseListener {
 
 	@Override
 	public void exitTableDef(CreateTableParser.TableDefContext ctx) {
-
+		
 	}
 
 	@Override
@@ -151,21 +169,23 @@ public class MyCreateTableListener extends CreateTableBaseListener {
 	private void validaDataType(String text) {
 		
 		switch (text.toUpperCase()) {
-		case "VARCHAR":
-			break;
-		case "DECIMAL":
-			break;
-		case "DATETIME":
-			break;
-		case "DATE":
-			break;
-		case "CHAR":
-			break;
-		case "NUMERIC":
-			break;
-		default:
-			parser.notifyErrorListeners("Tipo de dado '" + text + "' não reconhecido pela gramática. Verificar tipos de dados suportados");
-			break;
+			case "VARCHAR":
+				break;
+			case "DECIMAL":
+				break;
+			case "DATETIME":
+				break;
+			case "DATE":
+				break;
+			case "CHAR":
+				break;
+			case "NUMERIC":
+				break;
+			default:
+				parser.notifyErrorListeners("Tipo de dado '"
+						+ text
+						+ "' não reconhecido pela gramática. Verificar tipos de dados suportados");
+				break;
 		}
 		
 	}
@@ -178,8 +198,8 @@ public class MyCreateTableListener extends CreateTableBaseListener {
 
 	@Override
 	public void exitTablename(CreateTableParser.TablenameContext ctx) {
-		// TODO Auto-generated method stub
-		super.exitTablename(ctx);
+		// Define o nome da tabela
+		this.table.setName(ctx.table().getText());		
 	}
 
 	@Override
