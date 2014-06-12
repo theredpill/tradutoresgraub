@@ -26,6 +26,8 @@ public class Translate {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         // create a parser that feeds off the tokens buffer
         CreateTableParser parser = new CreateTableParser(tokens);
+        parser.removeErrorListeners(); // remove ConsoleErrorListener
+        parser.addErrorListener(new TratamentoError()); // add ours
         //
         ParseTree tree = parser.tableList();
         ParseTreeWalker walker = new ParseTreeWalker();
