@@ -3,19 +3,28 @@
       *>--------------------------------------------------------------------------------------------------------------<*
        IDENTIFICATION             DIVISION.
        PROGRAM-ID.                CRUD.
-<#-- Tem de pegar o início de um programa normal e colocar aqui -->
-
+       AUTHOR.                    Douglas Murillo Pedro.
+       INSTALLATION.              Douglas Murillo Pedro.
+       ENVIRONMENT                DIVISON.
+       CONFIGURATION              SECTION.
+       SPECIAL-NAMES.
+           DECIMAL-POINT     IS   COMMA,
+           CONSOLE           IS   CRT.
+       OBJECT                     SECTION.
+       CLASS-CONTROL.
+       INPUT-OUTPUT               SECTION.
+       FILE-CONTROL.
       *>--------------------------------------------------------------------------------------------------------------<*
-           COPY                   SELECT${tabela.name?upper_case}.CPY.
+           COPY                   Select.CPY.
       *>--------------------------------------------------------------------------------------------------------------<*
        DATA                       DIVISION.
        FILE                       SECTION.
-           COPY                   FD${tabela.name?upper_case}.CPY.
+           COPY                   FD.CPY.
       *>--------------------------------------------------------------------------------------------------------------<*
        WORKING-STORAGE            SECTION.
       *>--------------------------------------------------------------------------------------------------------------<*
        01  WRK-CAMPOS.
-           COPY                   FILESTATUS${tabela.name?upper_case}.CPY.
+           COPY                   FileStatus.CPY.
       *>--------------------------------------------------------------------------------------------------------------<*
        LINKAGE                    SECTION.
       *>--------------------------------------------------------------------------------------------------------------<*
@@ -29,11 +38,11 @@
            PERFORM                CLOSE-${tabela.name?upper_case}.
            EXIT                   PROGRAM.
       *>--------------------------------------------------------------------------------------------------------------<*
-           COPY                   OPEN${tabela.name?upper_case}.CPY.
-           COPY                   CREATE${tabela.name?upper_case}.CPY.
-           COPY                   READ${tabela.name?upper_case}.CPY.
-           COPY                   UPDATE${tabela.name?upper_case}.CPY.
-           COPY                   DELETE${tabela.name?upper_case}.CPY.
-           COPY                   CLOSE${tabela.name?upper_case}.CPY.
+           COPY                   Open.CPY.
+           COPY                   Create.CPY.
+           COPY                   Read.CPY.
+           COPY                   Update.CPY.
+           COPY                   Delete.CPY.
+           COPY                   Close.CPY.
       *>--------------------------------------------------------------------------------------------------------------<*
                                                            
