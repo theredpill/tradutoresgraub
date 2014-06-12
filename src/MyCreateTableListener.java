@@ -11,12 +11,12 @@ public class MyCreateTableListener extends CreateTableBaseListener {
 	
 	private Column column;
 	
-	//private CreateTableParser parser;
+	private CreateTableParser parser;
 	
 
 	public MyCreateTableListener(CreateTableParser parser) {
 		super();
-		//this.parser = parser;
+		this.parser = parser;
 	}
 	
 	public Table getTable() {
@@ -121,7 +121,16 @@ public class MyCreateTableListener extends CreateTableBaseListener {
 	public void exitColumnDef(CreateTableParser.ColumnDefContext ctx) {
 		//Cria uma nova coluna
 		this.column = new Column();		
-		this.column.setName(ctx.columnName().getText());
+	    if (ctx.columnName().getText().contains("-")) {
+	    	System.out.println("Encontrado '_' no campo " + ctx.columnName().getText() + ", Será substituído por '-'");
+	    }
+	    //O caracter _ é inválido na linguagem, será trocado por "-"
+		this.column.setName(ctx.columnName().getText().replace("_", "-"));
+		//Valida o tamanho do campo, que de acordo com o COBOL, não pode ultrapassar 32 caracteres
+		if (this.column.getName().length() > 32) {
+			parser.notifyErrorListeners("Campo '" + this.column.getName() + "' ultrapassa número de caracteres permitidos pela linguagem, fixado em 32. Tamanho do campo: " + this.column.getName().length());
+		}
+		validaDataType(ctx.dataTypeDef().dataType().getText());
 		this.column.setDataType(ctx.dataTypeDef().dataType().getText());
 		if (ctx.dataTypeDef().lengthDef() != null){
 			Integer num = Integer.parseInt(ctx.dataTypeDef().lengthDef().NUMBER(0).getText());
@@ -137,6 +146,28 @@ public class MyCreateTableListener extends CreateTableBaseListener {
 		}
 		
 		this.table.addColumn(this.column);		
+	}
+
+	private void validaDataType(String text) {
+		
+		switch (text.toUpperCase()) {
+		case "VARCHAR":
+			break;
+		case "DECIMAL":
+			break;
+		case "DATETIME":
+			break;
+		case "DATE":
+			break;
+		case "CHAR":
+			break;
+		case "NUMERIC":
+			break;
+		default:
+			parser.notifyErrorListeners("Tipo de dado '" + text + "' não reconhecido pela gramática. Verificar tipos de dados suportados");
+			break;
+		}
+		
 	}
 
 	@Override
