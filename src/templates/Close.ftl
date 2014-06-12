@@ -2,4 +2,4 @@
       *>-> Fechamento do arquivo ${tabela.name?lower_case}
       *>--------------------------------------------------------------------------------------------------------------<*
        CLOSE-${tabela.name?upper_case}.
-           CLOSE                  {tabela.name?upper_case}.CPY.
+           CLOSE ${tabela.name?upper_case}.

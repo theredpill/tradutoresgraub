@@ -2,5 +2,4 @@
       *>-> Abertura I-O do arquivo ${tabela.name?lower_case}
       *>--------------------------------------------------------------------------------------------------------------<*
        OPEN-${tabela.name?upper_case}.
-
-<#-- Declarar abertura IO do arquivo aqui -->
+           OPEN I-O ${tabela.name?upper_case}.
